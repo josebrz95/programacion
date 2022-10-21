@@ -1,0 +1,42 @@
+{
+  "name": "crud_nodejs",
+  "version": "1.0.0",
+  "description": "CRUD made with Node.js, Express, TypeScript, TypeORM, EJS & SQLite.",
+  "main": "index.js",
+  "repository": "https://github.com/sinvalbsneto/crud_nodejs.git",
+  "author": "Sinval Neto <70284242+sinvalbsneto@users.noreply.github.com>",
+  "license": "MIT",
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "moduleResolution": "node"
+  },
+  "include": [
+    "/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "scripts": {
+    "dev": "ts-node-dev src/server.ts",
+    "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js",
+    "migrations:generate": "npm run typeorm -- migration:generate -d ormconfig.ts src/database/migrations/new-migration",
+    "migrations:run": "npm run typeorm -- migration:run -d ormconfig.ts"
+  },
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "reflect-metadata": "^0.1.13",
+    "sqlite3": "^5.1.2",
+    "typeorm": "^0.3.9",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.12",
+    "@types/uuid": "^8.3.0",
+    "nodemon": "^2.0.20",
+    "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.3.4"
+  }
+}
