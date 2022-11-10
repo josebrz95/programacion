@@ -10,6 +10,9 @@ export class User {
   username: string;
 
   @Column()
+  password: string;
+
+  @Column()
   email: string;
 
   @Column()
@@ -18,7 +21,7 @@ export class User {
   @Column()
   state: string;
 
-  @Column()
+  @Column({nullable: true})
   city: string;
 
   @CreateDateColumn()

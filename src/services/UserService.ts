@@ -9,8 +9,8 @@ export class UserService {
         this.repository = connectionSource.getRepository(User);
     }
 
-    async create({ username, email, phone, city, state }: Partial<User>) {
-        if (!username || !email || !phone || !city || !state) {
+    async create({ username, email, phone, city, state, password }: Partial<User>) {
+        if (!username || !email || !phone || !state || !password) {
             throw new Error("Por favor llena todos los campos");
         }
         const usernameAlreadyExists = await this.repository.findOne({ where: { username } });
@@ -22,7 +22,7 @@ export class UserService {
             .createQueryBuilder()
             .insert()
             .into(User)
-            .values({ username, email, phone, city, state })
+            .values({ username, email, phone, city, state, password })
             .execute()
     }
 
@@ -56,7 +56,13 @@ export class UserService {
 
     async getData(id: string): Promise<Partial<User>>{
         return this.repository.findOne({
-            where: {id}
+            where: { id }
+        });
+    }
+
+    async getUserByCriteria(criteria: Partial<User>): Promise<Partial<User>>{
+        return this.repository.findOne({
+            where: { ...criteria }
         });
     }
 

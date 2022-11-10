@@ -3,13 +3,14 @@ import {generateUserRoutes} from "./UserRoutes";
 import {generateProductRoutes} from "./ProductRoutes";
 import {generateGenericRoutes} from "./GenericRoutes";
 import {generateCategoryRoutes} from "./CategoryRoutes";
+import {generateAuthenticationRoutes} from "./AuthenticationRoutes";
 
 const router = Router()
 
 function generateRoutes(): Router {
 
+    generateAuthenticationRoutes(router)
     generateUserRoutes(router);
-
     generateProductRoutes(router);
     generateGenericRoutes(router);
     generateCategoryRoutes(router);

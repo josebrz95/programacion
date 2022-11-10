@@ -3,10 +3,24 @@ import "express-async-errors";
 import express, { Request, Response, NextFunction } from "express";
 import path from "path";
 import routes from "./routes";
+import flash from "connect-flash";
+import session from "express-session";
+import passport from "passport";
+import './lib/passport'
 
 const app = express();
+
+app.use(session({  // Configuro el guardado de seción
+  secret: 'faztmysqlnodesession',
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(flash());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(routes);
 
