@@ -31,7 +31,7 @@ passport.use('local.signup', new LocalStrategy({
     passwordField: 'password',
     passReqToCallback: true
 }, async (req: Request, username, password, done) => {
-    const {email, city, state, phone} = req.body;
+    const { email, state, phone } = req.body;
 
     const newUser = {
         username,
@@ -60,12 +60,12 @@ passport.use('local.signup', new LocalStrategy({
 
 }));
 
-passport.serializeUser((usr: User, done) => {
-    done(null, usr.id);
+passport.serializeUser((user: User, done) => {
+    done(null, user);
 });
 
-passport.deserializeUser(async (id: string, done) => {
+passport.deserializeUser(async (user: User, done) => {
     const userService = new UserService()
-    const result = await userService.getData(id)
+    const result = await userService.getUserByCriteria({username: user.username})
     done(null, result);
 })

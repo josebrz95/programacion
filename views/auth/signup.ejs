@@ -7,6 +7,18 @@
 <br>
 
 <section class="container">
+    <%if(message.length > 0){ %><div class="conteiner p-4 m-1">
+        <div class="row">
+            <div class="col-md-4 mx-auto">
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong> <%= message %></strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <% } %>
     <div class="conteiner p-4">
         <div class="row">
             <div class="col-md-4 mx-auto">
@@ -52,7 +64,7 @@
                                     <option value="" selected disabled>Seleccione su provincia</option>
                                     <!-- Script by hscripts.com -->
                                     <option value="Buenos Aires">Buenos Aires</option>
-                                    <option value="Buenos Aires Capital">Buenos Aires Capital</option>
+                                    <option value="Buenos Aires Capital">CABA</option>
                                     <option value="Catamarca">Catamarca</option>
                                     <option value="Chaco">Chaco</option>
                                     <option value="Chubut">Chubut</option>

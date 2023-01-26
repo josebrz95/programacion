@@ -30,9 +30,9 @@ export function generateAuthenticationRoutes(app: Router): void {
 
     route.get('/logout', (req, res) => {
         req.logOut((err) => {
-            console.log(err.messsage)
+            if (err) console.log(err?.messsage)
+            req.flash('message', 'Gracias por usar esta cosa que se le podria llamar "app" (mas o menos)');
+            res.redirect('/signin');
         });
-        req.flash('message', 'Gracias por usar nuestra app');
-        res.redirect('/signin');
     });
 }

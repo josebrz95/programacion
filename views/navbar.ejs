@@ -20,6 +20,18 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="http://localhost:3000/categories">Tabla de Categorias</a>
                 </li>
+
+            </ul>
+            <ul>
+                <% if(login_user){ %>
+                    <li class="nav-item">
+                        <a href="./logout" class="nav-link active">SALIR<i class="bi bi-box-arrow-left"></i></a>
+                    </li>
+                <% } else{ %>
+                    <li class="nav-item">
+                        <a href="./logout" class="nav-link active">ENTRAR<i class="bi bi-box-arrow-left nav-link active"></i></a>
+                    </li>
+                <% } %>
             </ul>
             <form class="d-flex" action="http://localhost:3000/search" method="GET">
                 <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar" name="search">

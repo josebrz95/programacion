@@ -10,7 +10,7 @@ import './lib/passport'
 
 const app = express();
 
-app.use(session({  // Configuro el guardado de seción
+app.use(session({
   secret: 'faztmysqlnodesession',
   resave: false,
   saveUninitialized: false
@@ -21,6 +21,13 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use((req, res, next) => {
+  app.locals.message = req.flash('message');
+  app.locals.success = req.flash('success');
+  app.locals.login_user = req.user;
+  next();
+});
 
 app.use(routes);
 
