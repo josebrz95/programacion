@@ -21,7 +21,7 @@ export class User {
   @Column()
   state: string;
 
-  @Column()
+  @Column({nullable: true})
   city: string;
 
   @CreateDateColumn()

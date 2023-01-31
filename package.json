@@ -18,9 +18,11 @@
   ],
   "scripts": {
     "dev": "ts-node-dev src/server.ts",
-    "typeorm": "ts-node-dev --transpile-only ./node_modules/typeorm/cli.js -f ./ormconfig.json",
-    "migrate": "typeorm migration:create --",
-    "migrations:generate": "typeorm migration:generate -- --name",
+    "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js",
+    "database:up": "docker-compose up --build",
+    "database:down": "docker-compose down",
+    "database:enter": "docker exec -it type-db mysql -proot",
+    "migrations:generate": "npm run typeorm -- migration:generate -d ormconfig.ts src/database/migrations/new-migration",
     "migrations:run": "npm run typeorm -- migration:run -d ormconfig.ts"
   },
   "dependencies": {
@@ -30,27 +32,24 @@
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
     "express-session": "^1.17.2",
-    "multer": "^1.4.3",
     "mysql": "^2.18.1",
-    "passport": "^0.5.0",
+    "passport": "^0.6.0",
     "passport-local": "^1.0.0",
     "reflect-metadata": "^0.1.13",
-    "typeorm": "^0.2.34",
-    "uuid": "^8.3.2",
-    "typescript": "^4.3.4"
+    "typeorm": "^0.3.9",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
     "@types/connect-flash": "0.0.37",
     "@types/express": "^4.17.12",
     "@types/express-session": "^1.17.4",
-    "@types/morgan": "^1.9.3",
     "@types/passport": "^1.0.7",
     "@types/passport-local": "^1.0.34",
     "@types/uuid": "^8.3.0",
-    "@types/multer": "^1.4.7",
-    "morgan": "^1.10.0",
-    "ts-node": "10.8.1",
-    "ts-node-dev": "^2.0.0"
+    "nodemon": "^2.0.20",
+    "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.3.4"
   }
 }

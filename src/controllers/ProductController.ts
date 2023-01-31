@@ -20,12 +20,12 @@ class ProductController {
                 amount: parseInt(amount),
                 category
             }).then(() => {
-                res.render("message", {
+                res.render("common-views/message", {
                     message: "Producto creado"
                 });
             });
         } catch (err) {
-            res.render("message", {
+            res.render("common-views/message", {
                 message: `Error al crear el producto: ${err.message}`
             });
         }
@@ -56,12 +56,12 @@ class ProductController {
         const { id, name, description, amount, category } = req.body;
         try {
             await this.productService.update({ id, name, description, amount, category }).then(() => {
-                res.render("message", {
+                res.render("common-views/message", {
                     message: "Producto actualizado"
                 });
             });
         } catch (err) {
-            res.render("message", {
+            res.render("common-views/message", {
                 message: `Error al actualizar producto: ${err.message}`
             });
         }
@@ -72,12 +72,12 @@ class ProductController {
         const { id } = request.body;
         try {
             await this.productService.delete(id).then(() => {
-                res.render("message", {
+                res.render("common-views/message", {
                     message: "Producto eliminado"
                 });
             });
         } catch (err) {
-            res.render("message", {
+            res.render("common-views/message", {
                 message: `Error al eliminar producto: ${err.message}`
             });
         }

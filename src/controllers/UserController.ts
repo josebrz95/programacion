@@ -18,12 +18,12 @@ class UserController {
                 city,
                 state
             }).then(() => {
-                res.render("message", {
+                res.render("common-views/message", {
                     message: "Usuario registrado"
                 });
             });
         } catch (err) {
-            res.render("message", {
+            res.render("common-views/message", {
                 message: `Error al registrar usuario: ${err.message}`
             });
         }
@@ -53,12 +53,12 @@ class UserController {
 
         try {
             await this.service.update({ id, username, email, phone, city, state }).then(() => {
-                res.render("message", {
+                res.render("common-views/message", {
                     message: "Usuário actualizado"
                 });
             });
         } catch (err) {
-            res.render("message", {
+            res.render("common-views/message", {
                 message: `Error al actualizar usuario: ${err.message}`
             });
         }
@@ -70,12 +70,12 @@ class UserController {
 
         try {
             await this.service.delete(id).then(() => {
-                res.render("message", {
+                res.render("common-views/message", {
                     message: "Usuario eliminado"
                 });
             });
         } catch (err) {
-            res.render("message", {
+            res.render("common-views/message", {
                 message: `Error al eliminar usuario: ${err.message}`
             });
         }

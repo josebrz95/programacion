@@ -55,6 +55,5 @@ export class CategoryService {
             .set({ name, products })
             .where("id = :id", {id})
             .execute();
-
     }
 }

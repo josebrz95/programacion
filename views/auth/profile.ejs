@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<%- include  ('../common-views/head') -%>
+<body>
+<%- include  ('../common-views/navbar') -%>
+<br>
+
+    <div class="container p-4">
+        <%if(message.length > 0){ %><div class="conteiner p-4 m-1">
+            <div class="row">
+                <div class="col-md-4 mx-auto">
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong> <%= message %></strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <% } %>
+        <div class="row">
+            <div class="col-md-4 mx-auto">
+
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h3>Bienvenido <%= login_user.fullname %> </h3>
+                        <h4> <%= login_user.username %></h4>
+
+                        <form action="./edit" method="GET">
+                            <input type="hidden" name="id" value="<%= login_user.id %>">
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Vendor JS Files -->
+    <script src="public/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="public/js/main.js"></script>
+
+</body>
+
+</html>

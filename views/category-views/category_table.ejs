@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<%- include  ('../head') -%>
+<%- include  ('../common-views/head') -%>
 <body>
-<%- include  ('../navbar') -%>
+<%- include  ('../common-views/navbar') -%>
 <br>
 <div class="row container centered" width="100vw">
     <div class="text-center">
@@ -14,19 +14,14 @@
     <table class="table table-hover">
         <thead>
         <th scope="col">Nombre</th>
-        <th scope="col">Productos</th>
+        <th scope="col">Creacion</th>
+        <th scope="col">Actualizacion</th>
         </thead>
         <tbody>
         <% categories.forEach(function(category) { %>
             <tr>
                 <td>
                     <%= category.name %>
-                </td>
-                <td>
-                    <% category.products.forEach(function (category) { %>
-                        <%= category.name %>
-                        <br>
-                    <% }) %>
                 </td>
                 <td>
                     <%= category.created_at.toLocaleDateString() %>

@@ -15,12 +15,12 @@ class CategoryController {
                 name,
                 products
             }).then(() => {
-                res.render("message", {
+                res.render("common-views/message", {
                     message: "Categoria creada"
                 });
             });
         } catch (err) {
-            res.render("message", {
+            res.render("common-views/message", {
                 message: `Error al crear la categoria: ${err.message}`
             });
         }
@@ -48,12 +48,12 @@ class CategoryController {
         const { id, name, products } = req.body;
         try {
             await this.service.update({ id, name, products }).then(() => {
-                res.render("message", {
+                res.render("common-views/message", {
                     message: "Categoria actualizada"
                 });
             });
         } catch (err) {
-            res.render("message", {
+            res.render("common-views/message", {
                 message: `Error al actualizar categoria: ${err.message}`
             });
         }
@@ -65,12 +65,12 @@ class CategoryController {
 
         try {
             await this.service.delete(id).then(() => {
-                res.render("message", {
+                res.render("common-views/message", {
                     message: "Categoria eliminada"
                 });
             });
         } catch (err) {
-            res.render("message", {
+            res.render("common-views/message", {
                 message: `Error al eliminar categoria: ${err.message}`
             });
         }

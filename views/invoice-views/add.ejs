@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<%- include  ('../common-views/head') -%>
+<body>
+  <%- include  ('../common-views/navbar') -%>
+  <br>
+  <div class="container">
+    <div class="text-center">
+      <h2>Agregar Factura</h2>
+    </div>
+    <br>
+    <% var Client = {} %>
+    <form action="./add" method="POST">
+      <div class="row">
+        <div class="col-4">
+          <label for="client" class="form-label">Cliente</label>
+          <select name="client" id="client" class="form-select">
+            <option value="" selected disabled>Seleccione un cliente</option>
+            <% clients.forEach(function (clientSelected) { %>
+              <option value="<%= JSON.stringify(clientSelected) %>"><%= clientSelected.name + ' ' + clientSelected.lastname%></option>
+            <% }) %>
+          </select>
+        </div>
+        <div class="col-3">
+          <label for="cuit" class="form-label">Cuit</label>
+          <input type="text" name="cuit" id="cuit" class="form-control" readonly value="<%= Client.cuit %>">
+        </div>
+      </div>
+      <br>
+      <div class="col-2">
+        <label for="type" class="form-label">Tipo</label>
+        <select name="type" id="type" class="form-select">
+          <option value="" selected disabled>Selecione el tipo</option>
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="C">C</option>
+        </select>
+      </div>
+      <br>
+      <div class="col-lg-6 col-md-12">
+        <label for="products">Elija uno o varios productos</label>
+        <select multiple class="form-control" name="products" id="products">
+          <% products.forEach(function(product) { %>
+            <option value="<%= JSON.stringify(product) %>">
+              <%= product.name %>
+            </option>
+          <% }) %>
+        </select>
+      </div>
+      <br>
+      <br>
+      <div class="row">
+        <div class="col-6">
+          <div class="float-start">
+            <button type="submit" class="btn primary-btn">Crear comprobante</button>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="float-end">
+            <a href="../products" class="btn secondary-btn">Volver a la lista de comprobantes</a>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+<script>
+  var client = document.getElementById('client')
+  client.addEventListener('change',function () {
+    var cuit = document.getElementById('cuit')
+    var clientSelected = JSON.parse(client.options[client.selectedIndex].value)
+    cuit.value = clientSelected.cuit
+  });
+  window.onmousedown = function (e) {
+    var el = e.target;
+    if (el.tagName.toLowerCase() == 'option' && el.parentNode.hasAttribute('multiple')) {
+      e.preventDefault();
+      if (el.hasAttribute('selected')) el.removeAttribute('selected');
+      else el.setAttribute('selected', '');
+      var select = el.parentNode.cloneNode(true);
+      el.parentNode.parentNode.replaceChild(select, el.parentNode);
+    }
+  }
+</script>
+</body>
+
+</html>
