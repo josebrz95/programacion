@@ -6,37 +6,52 @@
   <br>
   <div class="container">
     <div class="text-center">
-      <h2>Tabla de Usuarios</h2>
+      <h2>Tabla de Clientes</h2>
     </div>
     <br>
-    <form action="./add" method="POST">
+    <form action="./edit" method="POST">
+      <input type="hidden" name="id" value="<%= clientSelected.id %>">
       <div class="row">
-        <div class="col-12">
-          <label for="username" class="form-label">Username</label>
-          <input type="text" name="username" id="username" class="form-control">
+        <div class="col-4">
+          <label for="name" class="form-label">Nombre</label>
+          <input type="text" name="name" id="name" class="form-control" value="<%= clientSelected.name %>">
+        </div>
+        <div class="col-4">
+          <label for="lastname" class="form-label">Apellido</label>
+          <input type="text" name="lastname" id="lastname" class="form-control" value="<%= clientSelected.lastname %>">
+        </div>
+        <div class="col-2">
+          <label for="cuit" class="form-label">Cuit</label>
+          <input type="text" name="cuit" id="cuit" class="form-control" value="<%= clientSelected.cuit %>">
         </div>
       </div>
       <br>
       <div class="row">
         <div class="col-6">
           <label for="email" class="form-label">Email</label>
-          <input type="text" name="email" id="email" class="form-control">
+          <input type="text" name="email" id="email" class="form-control" value="<%= clientSelected.email %>">
         </div>
         <div class="col-6">
           <label for="phone" class="form-label">Telefono</label>
-          <input type="text" name="phone" id="phone" class="form-control">
+          <input type="text" name="phone" id="phone" class="form-control" value="<%= clientSelected.phone %>">
         </div>
       </div>
       <br>
       <div class="row">
-        <div class="col-6">
-          <label for="city" class="form-label">Ciudad</label>
-          <input type="text" name="city" id="city" class="form-control">
+        <div class="col-4">
+          <label for="address" class="form-label">Direccion</label>
+          <input type="text" name="address" id="address" class="form-control" value="<%= clientSelected.address %>">
         </div>
-        <div class="col-6">
-          <label for="state" class="form-label">Estado</label>
+        <div class="col-4">
+          <label for="city" class="form-label">Ciudad</label>
+          <input type="text" name="city" id="city" class="form-control" value="<%= clientSelected.city %>">
+        </div>
+        <div class="col-4">
+          <label for="state" class="form-label">Provincia</label>
           <select name="state" id="state" class="form-select">
-            <option value="" selected disabled>Selecione su estado</option>
+            <option value="<%= clientSelected.state %>" selected>
+              <%= clientSelected.state %>
+            </option>
             <option value="MZ">Mendoza</option>
             <option value="BA">Buenos Aires</option>
             <option value="NQ">Neuquen</option>
@@ -54,12 +69,12 @@
       <div class="row">
         <div class="col-6">
           <div class="float-start">
-            <button type="submit" class="btn primary-btn">Agregar usuario</button>
+            <button type="submit" class="btn primary-btn">Actualizar Cliente</button>
           </div>
         </div>
         <div class="col-6">
           <div class="float-end">
-            <a href="../users" class="btn secondary-btn">Volver a la lista de usuarios</a>
+            <a href="../clients" class="btn secondary-btn">Volver a la lista de clientes</a>
           </div>
         </div>
       </div>

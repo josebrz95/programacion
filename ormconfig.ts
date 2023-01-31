@@ -2,8 +2,13 @@ import {DataSource} from "typeorm";
 
 export const connectionSource = new DataSource({
       migrationsTableName: 'migrations',
-      type: 'sqlite',
-      database: 'src/database/database.sqlite',
+      synchronize: false,
+      type: 'mysql',
+      host: "localhost",
+      port: 3306,
+      username: "root",
+      password: "root",
+      database: 'database',
       entities: ['src/entities/*.ts'],
       migrations: ['src/database/migrations/*.ts']
 });

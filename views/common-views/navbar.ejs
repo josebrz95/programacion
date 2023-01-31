@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
+    <div class="container">
+        <a class="navbar-brand" href=".."><img src="img/crm.png" alt="CRM icon" class="nav-icon"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 my-2">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="http://localhost:3000">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="http://localhost:3000/users">Usuarios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="http://localhost:3000/clients">Clientes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="http://localhost:3000/products">Productos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="http://localhost:3000/categories">Categorias</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="http://localhost:3000/invoices">Facturas</a>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <form class="d-flex" action="http://localhost:3000/search" method="GET">
+                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar" name="search">
+                <button class="btn secondary-btn" type="submit">Buscar</button>
+            </form>
+        </div>
+    </div>
+    <ul>
+        <% if(login_user){ %>
+            <li class="nav-item">
+                <a href="./logout" class="nav-link active"><img src="img/logout.png" class="nav-icon"></a>
+            </li>
+        <% } else{ %>
+            <li class="nav-item">
+                <a href="./logout" class="nav-link active"><img src="img/login.png" class="nav-icon"></a>
+            </li>
+        <% } %>
+    </ul>
+</nav>

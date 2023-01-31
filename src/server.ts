@@ -10,6 +10,10 @@ import './lib/passport'
 
 const app = express();
 
+app.use(express.static(path.join(__dirname, "..", "public")));
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "..", "views"));
+
 app.use(session({
   secret: 'faztmysqlnodesession',
   resave: false,
@@ -29,8 +33,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(routes);
-
 app.use((err: Error, request: Request, response: Response, next: NextFunction) => {
   if (err instanceof Error) {
     return response.status(400).json({
@@ -44,9 +46,7 @@ app.use((err: Error, request: Request, response: Response, next: NextFunction) =
   });
 });
 
-app.use(express.static(path.join(__dirname, "..", "public")));
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "..", "views"));
+app.use(routes);
 
 app.listen(3000, () => {
   console.log("Server is running at port http://localhost:3000");
