@@ -1,11 +1,12 @@
 import { Product } from "../entities/Product";
-import {Repository, getRepository} from "typeorm";
+import {Repository} from "typeorm";
+import { connectionSource } from "../../ormconfig";
 
 export class ProductService {
     private repository: Repository<Product>
 
     constructor() {
-        this.repository = getRepository(Product);
+        this.repository = connectionSource.getRepository(Product);
     }
 
     async create({ name, description, amount, category }: Partial<Product>) {

@@ -1,11 +1,12 @@
 import { Category } from "../entities/Category";
-import { Repository, getRepository} from "typeorm";
+import { Repository} from "typeorm";
+import { connectionSource } from "../../ormconfig";
 
 export class CategoryService {
     private repository: Repository<Category>
 
     constructor() {
-        this.repository = getRepository(Category);
+        this.repository = connectionSource.getRepository(Category);
     }
 
     async create({ name, products }: Partial<Category>) {

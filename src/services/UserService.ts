@@ -1,11 +1,12 @@
 import { User } from "../entities/User";
-import { Repository, getRepository } from "typeorm";
+import { connectionSource } from "../../ormconfig";
+import { Repository } from "typeorm";
 
 export class UserService {
     private repository: Repository<User>
 
     constructor() {
-        this.repository = getRepository(User);
+        this.repository = connectionSource.getRepository(User);
     }
 
     async create({ username, email, phone, city, state, password }: Partial<User>) {
