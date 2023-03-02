@@ -12,4 +12,5 @@ export function generateGenericRoutes(app: Router): void {
     }))
     route.get("/", genericController.index.bind(genericController));
     route.get("/search", genericController.searchEntity.bind(genericController))
+    route.get("/shopping", genericController.renderShop.bind(genericController))
 }

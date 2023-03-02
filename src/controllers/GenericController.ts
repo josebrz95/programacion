@@ -44,6 +44,11 @@ class GenericController {
             });
         }
     }
+
+    async renderShop(req: Request, res: Response){
+        //busco los productos agregados en el localstorage, los puedo enviar en req
+        res.render("common-views/shopping")
+    }
 }
 
 export default new GenericController()
